@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct HomeView: View {
+    var loginManager: LoginManager
+    
     var body: some View {
-        Text("Logged In")
+        VStack {
+            Text("Logged In")
+            Button("Logout") {
+                loginManager.logout()
+            }
+        }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(loginManager: loginManagerMock)
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @Binding var loginManager: LoginManager
+    var loginManager: LoginManager
     
     var body: some View {
         VStack {
@@ -23,5 +23,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(loginManager: .constant(loginManagerMock))
+    LoginView(loginManager: loginManagerMock)
 }

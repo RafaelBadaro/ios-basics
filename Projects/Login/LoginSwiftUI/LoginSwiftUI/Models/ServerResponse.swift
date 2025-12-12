@@ -6,6 +6,6 @@
 //
 
 
-struct ServerResponse {
+struct ServerResponse : Equatable {
     
 }

@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum ViewState {
+enum ViewState: Equatable {
     case loggedOff
     case loading
     case success(ServerResponse)
-    case error(Error)
+    case error(LoginError)
 }

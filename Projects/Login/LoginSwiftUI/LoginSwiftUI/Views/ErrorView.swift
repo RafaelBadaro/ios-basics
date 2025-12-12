@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct ErrorView: View {
-    @Binding var loginManager: LoginManager
+    var loginManager: LoginManager
     
     var body: some View {
         VStack {
             Text("ErrorView")
             Button("Go back") {
-                loginManager.setViewState(value: .loggedOff)
+                loginManager.dismissErrorView()
             }
         }
     }
 }
 
 #Preview {
-    ErrorView(loginManager: .constant(loginManagerMock))
+    ErrorView(loginManager: loginManagerMock)
 }

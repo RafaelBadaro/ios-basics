@@ -7,4 +7,4 @@
 
 import Foundation
 
-let loginManagerMock = LoginManager(loginService: LoginService())
+let loginManagerMock = LoginManager()

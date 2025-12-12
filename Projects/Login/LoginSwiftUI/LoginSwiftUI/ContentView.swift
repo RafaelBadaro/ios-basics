@@ -8,22 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var loginManager = LoginManager(loginService: LoginService())
+    @State private var loginManager = LoginManager()
    
     var body: some View {
         ZStack {
             switch loginManager.viewState {
             case .loggedOff:
-                LoginView(loginManager: $loginManager)
+                LoginView(loginManager: loginManager)
             case .loading:
                 LoadingView()
             case .success:
-                HomeView()
+                HomeView(loginManager: loginManager)
             case .error:
-                ErrorView(loginManager: $loginManager)
+                ErrorView(loginManager: loginManager)
             }
-        }.onAppear {
-            // Fetch last login data
         }
     }
 }
