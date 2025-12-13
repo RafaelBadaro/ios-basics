@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ErrorView: View {
-    var loginManager: LoginManager
+    let loginManager: LoginManager
     
     var body: some View {
         VStack {
             Text("ErrorView")
+                .accessibilityIdentifier("errorViewText")
             Button("Go back") {
                 loginManager.dismissErrorView()
             }
+            .accessibilityIdentifier("errorViewGoBackButton")
         }
     }
 }

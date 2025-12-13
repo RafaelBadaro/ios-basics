@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct LoginView: View {
-    var loginManager: LoginManager
+    let loginManager: LoginManager
     
     var body: some View {
         VStack {
             Text("LoginView")
+                .accessibilityIdentifier("loginViewText")
             Button("Login") {
                 Task {
                     await loginManager.login()
                 }
             }
+                .accessibilityIdentifier("loginViewButton")
         }
     }
 }

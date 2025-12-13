@@ -13,7 +13,7 @@ class LoginManager {
     private(set) var viewState: ViewState = .loggedOff
     let loginService: LoginServiceProtocol
     
-    init(loginService: LoginServiceProtocol = LoginService()) {
+    init(loginService: LoginServiceProtocol = ServiceProvider.shared.makeLoginService()) {
         self.loginService = loginService
     }
     

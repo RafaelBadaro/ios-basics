@@ -23,7 +23,7 @@ struct LoginService: LoginServiceProtocol {
         if randomNumber % 2 == 0 {
             return ServerResponse()
         } else {
-            throw LoginError.authenticationFailed("Erro de autenticacao")
+            throw LoginError.authFailed("Erro de autenticacao")
         }
         
     }

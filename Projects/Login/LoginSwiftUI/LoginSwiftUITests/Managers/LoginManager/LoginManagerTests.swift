@@ -28,7 +28,7 @@ struct LoginManagerTests {
     func login_error_authenticationFailed() async throws {
         // Arrange
         let errorMessage = "Authentication Failed"
-        let error = LoginError.authenticationFailed(errorMessage)
+        let error = LoginError.authFailed(errorMessage)
         
         let mock = LoginServiceMock(result: .failure(error))
         let loginManager = LoginManager(loginService: mock)
@@ -37,7 +37,7 @@ struct LoginManagerTests {
         await loginManager.login()
         
         // Assert
-        #expect(loginManager.viewState == ViewState.error(.authenticationFailed(errorMessage)))
+        #expect(loginManager.viewState == ViewState.error(.authFailed(errorMessage)))
     }
     
     @Test @MainActor
