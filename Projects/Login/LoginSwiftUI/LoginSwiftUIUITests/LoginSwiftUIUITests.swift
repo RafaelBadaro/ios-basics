@@ -27,6 +27,7 @@ final class LoginSwiftUIUITests: XCTestCase {
         
         enum ErrorView {
             static let errorViewText = "errorViewText"
+            static let errorViewMessage = "errorViewMessage"
             static let errorViewGoBackButton = "errorViewGoBackButton"
         }
         
@@ -39,16 +40,16 @@ final class LoginSwiftUIUITests: XCTestCase {
     override func tearDownWithError() throws {
     }
     
-    private func launchApp(mockBehavior: MockUITestLoginService.Behavior) -> XCUIApplication {
+    private func launchApp(mockBehavior: String) -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchEnvironment = ["MOCK_LOGIN_BEHAVIOR": mockBehavior.rawValue]
+        app.launchEnvironment = ["MOCK_LOGIN_BEHAVIOR": mockBehavior]
         app.launch()
         return app
     }
 
     @MainActor
     func test_login_success() throws {
-        let app = launchApp(mockBehavior: .success)
+        let app = launchApp(mockBehavior: "success")
         
         // 1. Check LoginView
         XCTAssert(app.staticTexts[Constants.LoginView.loginViewText].exists)
@@ -72,7 +73,7 @@ final class LoginSwiftUIUITests: XCTestCase {
 
     @MainActor
     func test_login_error_authError() throws {
-        let app = launchApp(mockBehavior: .authError)
+        let app = launchApp(mockBehavior: "authError")
         
         // 1. Check LoginView
         XCTAssert(app.staticTexts[Constants.LoginView.loginViewText].exists)
@@ -85,12 +86,17 @@ final class LoginSwiftUIUITests: XCTestCase {
         let errorViewExists = app.staticTexts[Constants.ErrorView.errorViewText]
             .waitForExistence(timeout: 3)
         XCTAssert(errorViewExists, "Error view should appear after loading")
+        
+//        let errorMessage = app.staticTexts[Constants.ErrorView.errorViewMessage]
+//         XCTAssert(errorMessage.exists)
+//         XCTAssert(errorMessage.label.contains("Mock auth error"), "Should show auth error message")
+//        
         XCTAssert(app.buttons[Constants.ErrorView.errorViewGoBackButton].exists)
     }
     
     @MainActor
     func test_login_error_authError_goBack() throws {
-        let app = launchApp(mockBehavior: .authError)
+        let app = launchApp(mockBehavior: "authError")
         
         // 1. Check LoginView
         XCTAssert(app.staticTexts[Constants.LoginView.loginViewText].exists)
