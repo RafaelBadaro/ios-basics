@@ -1,6 +1,6 @@
 # ios-basics
 
-Template code and small reference projects for anything related to Swift/iOS.
+Template code and small reference projects for anything that I study and code related to Swift/iOS.
 
 ## Projects
 
